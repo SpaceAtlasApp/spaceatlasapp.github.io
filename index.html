@@ -4,6 +4,9 @@
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" type="text/css" href="./login.css">
         <link rel="stylesheet" type="text/css" href="./quiz.css">
+        <link rel="stylesheet" type="text/css" href="./settings.css">
+        <link rel="stylesheet" type="text/css" href="./profile.css">
+
         <link rel="icon" href="images/icon.png">
         <script src="script.js"></script>
         
@@ -11,37 +14,70 @@
         <link rel="apple-touch-startup-image" href="images/launch.png">
         <meta name="apple-mobile-web-app-title" content="Atlas">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-status-bar-style" content="red">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         
     </head>
     <body onload="start()">
         <div class="pages" id='login' style='display:none'>
-            <input type="text" id="username" placeholder="USERNAME">
-            <input type="password" id="password" placeholder="PASSWORD">
-            <button id="loginButton" onclick="logIn()">Log In</button>
+            <form>
+                <p id="error"></p>
+                <input class="loginInput" type="text" id="username" placeholder="USERNAME" autocomplete="username">
+                <input class="loginInput" type="password" id="password" placeholder="PASSWORD" autocomplete="current-password">
+                <button class="loginButtons" id="createButton" onclick="logIn(createAccount)">Create Account</button>
+                <button class="loginButtons" id="loginButton" onclick="logIn()">Log In</button>
+            </form>
         </div>
 
         <div class="pages" id='quiz' style='display:none'>
-            <div id='mcq'>
-                <div class="question">
-                    <p id="question"></p>
-                    <p id="timer"></p>
+            <div id="map" style='display:none' onclick="startQuiz()">
+                <p id="planetName"></p>
+                <img id="rocket2" src="images/rocket.png" style="position: absolute; height: 40vw; transform: rotate(-90deg);">
+            </div>
+            <div id="quiz2" style='display:none'>
+                <div id='mcq'>
+                    <p id="resultview"></p>
+                    <div class="question">
+                        <p id="question"></p>
+                    </div>
+                    <div class="timer" id="timerBackground">
+                        <center>
+                            <p id="timer"></p>
+                        </center>
+                    </div>
+                    <div class="answers">
+                        <button class="ans" id="ans1" onclick="answerClicked(0)"></button>
+                        <button class="ans" id="ans2" onclick="answerClicked(1)"></button>
+                        <button class="ans" id="ans3" onclick="answerClicked(2)"></button>
+                    </div>
                 </div>
-                <div class="answers">
-                    <button class="ans" id="ans1" onclick="answerClicked(0)"></button>
-                    <button class="ans" id="ans2" onclick="answerClicked(1)"></button>
-                    <button class="ans" id="ans3" onclick="answerClicked(2)"></button>
-                    <button class="ans" id="ans4" onclick="answerClicked(3)"></button>
+                <div id="result" style='display:none' onclick="planets()">
+                    <div id="resultTitle">
+                        <h1 id="congrats">Congratulations!</h1>
+                    </div>
+                    <center>
+                    <div id="resultDiv"></div>
+                    </center>
+                    <div class="rewardDiv">
+                        <p id="meteorites"></p>
+                        <img class="meteoriteImage" src="images/meteorite.png" />
+                    </div>
                 </div>
                 <div id="myProgress">
-                    <div id="myBar">0%</div>
+                    <div id="myBar" style="float: left">0%</div>
+                    <img id="rocket" src="images/rocket.png" style="float: right; height: 200%; position:absolute;left:calc(0% - 70px); top:-50%"/>
                 </div>
             </div>
         </div>
 
         <div class='pages' id='home' style="display:none">
-            <div class='contents'>
+            <div class='contents' id='0' style="display:none">
+                <h1 id="learnTitle">Learn</h1>
+            </div>
+            <div class='contents' id='1' style="display:none">
+                <h1 id="shopTitle">Shop</h1>
+            </div>
+            <div class='contents' id='2' style="display:none">
                 <p id="key"></p>
                 <a onclick="switchPage('quiz')" href="#">quiz</a>
                 <br>
@@ -49,22 +85,54 @@
                 <br>
                 <a onclick="clearCookies()" href="#">Clear Cookies</a>
             </div>
+            <div class='contents' id='3' style="display:none">
+                <h1 id="settingsTitle">Settings</h1>
+                <div class="settings" id="opt1">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    Sound
+                </div>
+            </div>
+            <div class='contents' id='4' style="display:none">
+                <h1 id="profileTitle">Profile</h1>
+                <img id="profilePic">
+                <p id="usernameProfile"></p>
+                <h4>Achievements</h4>
+                <ul id="achievements">
+                        
+                </ul>
+                <div id="achievementDisabler" style="display:none" onclick="hideAchievement()"></div>
+                <div id="achievementPopup" style="display:none">
+                    <div class="an">
+                        <h3 id="achievementName"></h3>
+                    </div>
+                    <div class="ai">
+                        <img id="achievementImage"/>
+                    </div>
+                    <div class="ad">
+                        <p id="achievementDescription"></p>
+                    </div>
+                    
+                </div>
+            </div>
 
             <div class='navbar'>
-                <button class="tab">
-                    tab 1
+                <button class="tab" onclick="switchTab('0')">
+                    Learn
                 </button>
-                <button class="tab">
-                    tab 2
+                <button class="tab" onclick="switchTab('1')">
+                    Shop
                 </button>
-                <button class="tab">
-                    tab 3
+                <button class="tab" onclick="switchTab('2')">
+                    Home
                 </button>
-                <button class="tab">
-                    tab 4
+                <button class="tab" onclick="switchTab('3')">
+                    Settings
                 </button>
-                <button class="tab">
-                    tab 5
+                <button class="tab" onclick="switchTab('4')">
+                    Profile
                 </button>
             </div>
         </div>
