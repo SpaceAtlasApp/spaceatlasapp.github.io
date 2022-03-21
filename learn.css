@@ -8,7 +8,7 @@
 
 @media (max-width: 450px) {
     .learn {
-        height: calc(100% - 22vw - 2ch);
+        height: calc(100% - 22vw - 4ch);
     }
 }
 
