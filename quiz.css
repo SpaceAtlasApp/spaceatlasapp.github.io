@@ -8,7 +8,7 @@
     background-repeat: no-repeat;
 }
 
-#result {
+.result {
     position: relative;
     background-image: url("images/result.png");
     background-size: auto 100%;
@@ -184,12 +184,30 @@
     position: relative;
 }
 
+.rewardDivEnd {
+    background-color: #fb78c9;
+    width: 90%;
+    height: 8ch;
+    top: 1ch;
+    border: solid 3px;
+    position: relative;
+}
+
 #meteorites {
     margin-top: calc(1ch);
     font-size: 18px;
     width: calc(100% - 15vh);
     float: left;
 }
+
+#meteoritesEnd {
+    margin-top: calc(1ch);
+    font-size: 18px;
+    width: calc(100% - 15vh);
+    margin-top:1.5ch;
+    float: left;
+}
+
 
 .meteorCounter{
     float: right
@@ -211,8 +229,3 @@
     display: none;
 }
 
-
-@keyframes spin {
-    0% {transform: rotate(0deg)}
-    100% {transform: rotate(360deg)}
-}

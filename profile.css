@@ -7,9 +7,9 @@
 #achievements li {
     margin-left: 2px;
     margin-right: 2px;
+    margin: 2px;
     list-style-type: none;
-    float: left;
-    position: relative;
+    display: inline-block;
 }
 
 #achievementDisabler {
@@ -21,34 +21,74 @@
 }
 
 #achievementImage {
-    width: 10vh;
-    height: 10vh;
+    width: 20vh;
+    height: 20vh;
 }
 
 #achievementPopup {
-    background-color: greenyellow;
     position: absolute;
     width:96%;
-    height: 60%;
+    height: 20%;
     left: 2%;
-    top: 20%;
+    top: 40%;
 }
 
 .an {
     float: left;
-    width: calc(100% - 10vh);
+    width: calc(100% - 20vh);
     height: 10vh;
-    background-color: cyan;
+    /*background-color: cyan;*/
 }
 
 .ai {
     float: right;
-    width: 10vh;
-    background-color: yellow;
+    width: 20vh;
+    /*background-color: yellow;*/
 }
 
 .ad {
     top: 10vh;
+    width: calc(100% - 20vh);
     float: left;
-    background-color: magenta;
+    /*background-color: magenta;*/
+}
+
+#inventory {
+    margin: 0;
+    padding: 0;
+    padding: 5px;
+}
+
+#inventory li {
+    margin-left: 2px;
+    margin-right: 2px;
+    margin: 2px;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.profile {
+    float: right;
+    position: absolute;
+    text-align: right;
+    top:0%;
+    right: 0%;
+}
+
+.profileScroll {
+    height: calc(100vh - 20vw);
+    overflow-y:scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+@media (max-width: 450px) {
+    .profileScroll {
+        height: calc(100% - 22vw);
+    }
+}
+
+.profileScroll::-webkit-scrollbar {
+    display: none;
 }

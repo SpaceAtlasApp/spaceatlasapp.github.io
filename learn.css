@@ -1,0 +1,26 @@
+.learn {
+    height: calc(100vh - 20vw);
+    overflow-y:scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+@media (max-width: 450px) {
+    .learn {
+        height: calc(100% - 22vw - 2ch);
+    }
+}
+
+.learn::-webkit-scrollbar {
+    display: none;
+}
+
+.learnTabs div {
+    padding: 1ch;
+    background-color: #fb78c9;
+}
+
+.learnTabs div:nth-child(odd) {
+    background-color: #f8afdc;
+}

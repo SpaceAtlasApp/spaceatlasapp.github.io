@@ -93,3 +93,27 @@ p {
     height: 100%;
     opacity: 0;
 }
+
+.achievementPopup {
+    background-color: cyan;
+    position: absolute; 
+    width: 90%; 
+    left:5%; 
+    height:10vh
+}
+
+#achievIcn {
+    height:10vh;
+    float: right
+}
+
+
+@keyframes spin {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+
+.imageGrid {
+    width: 7ch;
+    height: 7ch;
+}
