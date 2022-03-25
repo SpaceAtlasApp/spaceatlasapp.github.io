@@ -517,10 +517,17 @@ function switchTab(id) {
   pages = document.getElementsByClassName("contents");
   for (x = 0; x < pages.length; x++) {
     pages[x].style.display = 'none';
+    //tabs[x].classList.remove('tabselected');
+  }
+  oldTab = document.getElementsByClassName('tabselected');
+  for (x = 0; x < oldTab.length; x++) {
+    oldTab[x].classList.remove('tabselected');
   }
   //Show the specified page
   page = document.getElementById(id);
   page.style.display = 'block';
+  tabSel = document.getElementById('tab'+(parseInt(id)+1));
+  tabSel.classList.add('tabselected');
   if (id == "0") {
     learn();
   }
