@@ -90,6 +90,30 @@ p {
 
 }
 
+.navbar #tab1 {
+    background-image: url("images/tabs/tab1.png");
+    background-size: auto 100%;
+}
+
+.navbar #tab2 {
+    background-image: url("images/tabs/tab2.png");
+    background-size: auto 100%;
+}
+
+.navbar #tab3 {
+    background-image: url("images/tabs/tab3.png");
+    background-size: auto 100%;
+}
+
+.navbar #tab4 {
+    background-image: url("images/tabs/tab4.png");
+    background-size: auto 100%;
+}
+
+.navbar #tab5 {
+    background-image: url("images/tabs/tab5.png");
+    background-size: auto 100%;
+}
 
 .fullscreen {
     width: 100%;
